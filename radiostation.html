@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="stylesheet.css?v=31">
+</head>
+<body>
+    <header>
+        <img src="SMG4_2023.svg"><h2>SMG4 Radio: Pre-alpha v2</h2><h3></h3>
+    </header>
+    <center>
+        <a href="https://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!">
+            <img src="https://www.hamqsl.com/solar101vhfpic.php" style="max-width: 100%; width: 500px; height: auto;">
+        </a>
+    </center>    
+    <div class="container">
+        <div class="audio">
+            <div class="player">
+                <audio id="stream" autoplay controls playsinline>
+                    <source id="audioSource" src="" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+        <div class="controls">
+            <label for="volume">Volume Control</label>
+            <input type="range" id="volume" class="volume-control" min="0" max="1" step="0.01" value="1">
+            <span id="volumeValue">100%</span>
+        </div>
+        <div class="links">
+            <div class="search-bar">
+                <label for="searchbar">Search for a radio station:</label>
+                <input type="text" id="searchbar" placeholder="Type to search...">
+            </div>
+            
+            <h2>Radio Stations</h2>
+            <div class="listing radio-station">
+                <ul id="radioList">
+                    <li data-url="http://radio-holding.ru:9000/marusya_default">Маруся ФМ <button class="playPauseBtn">Play/Pause</button> <button class="favoriteBtn">Favorite</button></li>
+                    <li data-url="https://stream.zeno.fm/dilmstb73pbtv">Don Pollo Ahh FM <button class="playPauseBtn">Play/Pause</button> <button class="favoriteBtn">Favorite</button></li>
+                    <li data-url="http://89.204.58.59:8000/di_72_01">DFM Радио <button class="playPauseBtn">Play/Pause</button> <button class="favoriteBtn">Favorite</button></li>
+                    <li data-url="http://ep128.hostingradio.ru:8030/ep128">Europa Plus FM <button class="playPauseBtn">Play/Pause</button> <button class="favoriteBtn">Favorite</button></li>
+                    <li data-url="http://89.204.58.59:8000/cd_72_01">Comedy Радио <button class="playPauseBtn">Play/Pause</button> <button class="favoriteBtn">Favorite</button></li>
+                    <li data-url="http://microit.n340.com:9000/VgMv0WV17ZVx1uuo_12_love_64_reg_44">Love Радио <button class="playPauseBtn">Play/Pause</button> <button class="favoriteBtn">Favorite</button></li>
+                    <li data-url="http://online-1.gkvr.ru:8000/s2.aac">Авторадио <button class="playPauseBtn">Play/Pause</button> <button class="favoriteBtn">Favorite</button></li>
+                    <li data-url="http://online-1.gkvr.ru:8000/record_eka_64.aac">Радио Рекорд <button class="playPauseBtn">Play/Pause</button> <button class="favoriteBtn">Favorite</button></li>
+                    <li data-url="http://online-1.gkvr.ru:8000/dacha_eka_64.aac">Радио дача <button class="playPauseBtn">Play/Pause</button> <button class="favoriteBtn">Favorite</button></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Display Local Time and UTC Time -->
+        <div class="time-info">
+            <p>Local Time: <span id="localTime"></span></p>
+            <p>UTC Time: <span id="utcTime"></span></p>
+        </div>
+
+        <!-- Favorite Stations List -->
+        <h2>Favorite Stations</h2>
+        <div class="listing radio-station">
+            <ul id="favoriteList">
+                <!-- Favorite stations will appear here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Time Display Function
+        function updateTime() {
+            const localTimeElement = document.getElementById('localTime');
+            const utcTimeElement = document.getElementById('utcTime');
+
+            const now = new Date();
+
+            // Get local time in a readable format
+            const localTime = now.toLocaleString();
+
+            // Get UTC time in a readable format
+            const utcTime = now.toUTCString();
+
+            // Update the elements with the respective times
+            localTimeElement.textContent = localTime;
+            utcTimeElement.textContent = utcTime;
+        }
+
+        // Call updateTime every second to keep the time updated
+        setInterval(updateTime, 1000);
+
+        // Call it once on page load to show the time immediately
+        updateTime();
+
+        const audioElement = document.getElementById('stream');
+        const audioSource = document.getElementById('audioSource');
+        const radioList = document.getElementById('radioList');
+        const searchbar = document.getElementById('searchbar');
+
+        // Handle Play/Pause button
+        document.querySelectorAll('.playPauseBtn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const newUrl = this.parentElement.getAttribute('data-url');
+                
+                if (audioSource.src === newUrl && !audioElement.paused) {
+                    audioElement.pause();
+                } else {
+                    audioSource.src = newUrl;
+                    audioElement.load();
+                    audioElement.play();
+                }
+            });
+        });
+
+        // Handle Favorite button
+        document.querySelectorAll('.favoriteBtn').forEach(button => {
+            button.addEventListener('click', function() {
+                const stationName = this.parentElement.textContent.split(' ')[0]; // Get the station name
+                const stationUrl = this.parentElement.getAttribute('data-url');
+                const favoriteList = document.getElementById('favoriteList');
+
+                // Create a new list item for the favorite
+                const favoriteItem = document.createElement('li');
+                favoriteItem.textContent = stationName;
+                
+                // Create a play/pause button for the favorite station
+                const favoritePlayPauseBtn = document.createElement('button');
+                favoritePlayPauseBtn.textContent = "Play/Pause";
+                favoritePlayPauseBtn.classList.add('favoritePlayPauseBtn');
+                favoriteItem.appendChild(favoritePlayPauseBtn);
+
+                // Create an unfavorite button
+                const unfavoriteBtn = document.createElement('button');
+                unfavoriteBtn.textContent = "Unfavorite";
+                unfavoriteBtn.classList.add('unfavoriteBtn');
+                favoriteItem.appendChild(unfavoriteBtn);
+
+                favoriteList.appendChild(favoriteItem);
+
+                // Optionally, store favorite stations in localStorage for persistence
+                let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                favorites.push({ name: stationName, url: stationUrl });
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+
+                // Add Play/Pause functionality to the newly created button
+                favoritePlayPauseBtn.addEventListener('click', function() {
+                    if (audioSource.src === stationUrl && !audioElement.paused) {
+                        audioElement.pause();
+                    } else {
+                        audioSource.src = stationUrl;
+                        audioElement.load();
+                        audioElement.play();
+                    }
+                });
+
+                // Add functionality for the unfavorite button
+                unfavoriteBtn.addEventListener('click', function() {
+                    favoriteItem.remove(); // Remove from the list
+                    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                    favorites = favorites.filter(fav => fav.url !== stationUrl); // Remove from localStorage
+                    localStorage.setItem('favorites', JSON.stringify(favorites));
+                });
+            });
+        });
+
+        // Search functionality
+        searchbar.addEventListener('input', function() {
+            const searchText = searchbar.value.toLowerCase();
+            const listItems = radioList.getElementsByTagName('li');
+            Array.from(listItems).forEach(item => {
+                const stationName = item.textContent.toLowerCase();
+                item.style.display = stationName.includes(searchText) ? '' : 'none';
+            });
+        });
+
+        // Volume Control
+        const volumeControl = document.getElementById('volume');
+        const volumeValue = document.getElementById('volumeValue');
+
+        volumeControl.addEventListener('input', function() {
+            audioElement.volume = volumeControl.value;
+            volumeValue.textContent = Math.round(volumeControl.value * 100) + '%';
+        });
+
+    </script>
+</body>
+</html>
