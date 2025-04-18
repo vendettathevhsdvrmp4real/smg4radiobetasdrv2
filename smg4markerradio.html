@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>EVENT OF SMG4 RADIO SMG4 MARKER RADIO</title>
+  <meta name="author" content="SMG4 Radio">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta name="keywords" content="SMG4 Radio, радио онлайн, слушать радио, EVENT, музыка онлайн, интернет-радио, популярные треки 2025, эксклюзивные треки, радиостанция SMG4 Marker Radio, танцевальная музыка онлайн, радио для вечеринок, слушать музыку бесплатно, музыкальное радио онлайн">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SMG4 Marker Radio — Слушать онлайн">
+  <meta property="og:description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg">
+  <meta property="og:url" content="https://smg4radiobetawebv2.pages.dev/">
+  <meta property="og:site_name" content="SMG4 Marker Radio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SMG4 Marker Radio — Слушать онлайн">
+  <meta name="twitter:description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta name="twitter:image" content="https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg">
+
+  <!-- schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RadioStation",
+    "name": "SMG4 Marker Radio",
+    "url": "https://smg4radiobetawebv2.pages.dev/",
+    "genre": "Event, Electronic, Dance",
+    "description": "OFFICIAL EVENT BY SMG4 RADIO",
+    "image": "https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg",
+    "sameAs": [
+      "https://smg4radiobetawebv2.pages.dev/"
+    ]
+  }
+  </script>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="SMG4.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="SMG4.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="SMG4.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="SMG4.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="SMG4.png">
+  <link rel="mask-icon" href="SMG4.png" color="#181818">
+  <link rel="shortcut icon" href="SMG4.png">
+  <meta name="msapplication-TileColor" content="#181818">
+  <meta name="theme-color" content="#181818">
+
+  <!-- Styles -->
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .radio-player {
+      background: #222;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .play-btn {
+      background: #1db954;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-bottom: 15px;
+    }
+
+    .play-btn:hover {
+      background: #1ed760;
+    }
+
+    .volume-control {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .time-info {
+      margin-top: 20px;
+    }
+
+    .logo {
+      max-width: 150px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="radio-player">
+    <img class="logo" src="./SMG4_2023.svg" alt="SMG4 Logo">
+    <h2>SMG4 MARKER RADIO</h2>
+    <button class="play-btn" onclick="togglePlay()">Play</button>
+    <audio id="radio" src="https://stream.zeno.fm/drhagg7ds1ltv" type="audio/mpeg"></audio>
+
+    <label for="volume">Volume Control</label>
+    <input type="range" id="volume" class="volume-control" min="0" max="1" step="0.01" value="1">
+    <p>Громкость: <span id="volumeValue">100%</span></p>
+
+    <div class="time-info">
+      <p>Local Time: <span id="localTime"></span></p>
+      <p>UTC Time: <span id="utcTime"></span></p>
+    </div>
+    <a href="index.html">back</a>
+  </div>
+
+  <!-- Stats + Solar Data -->
+  <a href="https://info.flagcounter.com/Filz">
+    <img src="https://s01.flagcounter.com/count2/Filz/bg_FFFFFF/txt_000000/border_CCCCCC/columns_8/maxflags_40/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0">
+  </a>
+  <a href="https://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!">
+    <img src="https://www.hamqsl.com/solar101vhfpic.php" style="max-width: 100%; width: 500px; height: auto;">
+  </a>
+
+  <!-- Script -->
+  <script>
+    const radio = document.getElementById('radio');
+    const button = document.querySelector('.play-btn');
+    const volumeSlider = document.getElementById('volume');
+    const volumeValue = document.getElementById('volumeValue');
+    let isPlaying = false;
+
+    function togglePlay() {
+      if (!isPlaying) {
+        radio.play();
+        button.textContent = 'Pause';
+      } else {
+        radio.pause();
+        button.textContent = 'Play';
+      }
+      isPlaying = !isPlaying;
+    }
+
+    volumeSlider.addEventListener('input', () => {
+      radio.volume = volumeSlider.value;
+      volumeValue.textContent = Math.round(volumeSlider.value * 100) + '%';
+    });
+
+    function updateTime() {
+      const now = new Date();
+      const localTime = now.toLocaleTimeString();
+      const utcTime = now.toUTCString().split(' ')[4]; // extract just HH:MM:SS
+      document.getElementById('localTime').textContent = localTime;
+      document.getElementById('utcTime').textContent = utcTime;
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime(); // Initial call
+  </script>
+
+</body>
+</html>
