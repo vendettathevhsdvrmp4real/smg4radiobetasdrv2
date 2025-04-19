@@ -82,7 +82,7 @@
       font-size: 16px;
       cursor: pointer;
       transition: background 0.3s ease;
-      margin-bottom: 15px;
+      margin: 10px 5px;
     }
 
     .play-btn:hover {
@@ -102,6 +102,11 @@
       max-width: 150px;
       margin-bottom: 20px;
     }
+
+    #recordTimer {
+      margin-top: 10px;
+      font-weight: bold;
+    }
   </style>
 </head>
 
@@ -110,24 +115,31 @@
   <div class="radio-player">
     <img class="logo" src="./SMG4_2023.svg" alt="SMG4 Logo">
     <h2>SMG4 MARKER RADIO</h2>
+
     <button class="play-btn" onclick="togglePlay()">Play</button>
+    <button class="play-btn" id="recordBtn" onclick="toggleRecording()">Start Recording</button>
+    
     <audio id="radio" src="https://stream.zeno.fm/drhagg7ds1ltv" type="audio/mpeg"></audio>
 
     <label for="volume">Volume Control</label>
     <input type="range" id="volume" class="volume-control" min="0" max="1" step="0.01" value="1">
     <p>Громкость: <span id="volumeValue">100%</span></p>
 
+    <p id="recordTimer" style="display:none;">Recording Time: 00:00</p>
+    <a id="downloadLink" style="display:none;" download="radio_recording.webm">Download Recording</a>
+
     <div class="time-info">
       <p>Local Time: <span id="localTime"></span></p>
       <p>UTC Time: <span id="utcTime"></span></p>
     </div>
+    
     <a href="index.html">back</a>
   </div>
 
-  <!-- Stats + Solar Data -->
   <a href="https://info.flagcounter.com/Filz">
     <img src="https://s01.flagcounter.com/count2/Filz/bg_FFFFFF/txt_000000/border_CCCCCC/columns_8/maxflags_40/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0">
   </a>
+
   <a href="https://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!">
     <img src="https://www.hamqsl.com/solar101vhfpic.php" style="max-width: 100%; width: 500px; height: auto;">
   </a>
@@ -138,7 +150,15 @@
     const button = document.querySelector('.play-btn');
     const volumeSlider = document.getElementById('volume');
     const volumeValue = document.getElementById('volumeValue');
+    const recordBtn = document.getElementById('recordBtn');
+    const downloadLink = document.getElementById('downloadLink');
+    const recordTimer = document.getElementById('recordTimer');
+
     let isPlaying = false;
+    let mediaRecorder;
+    let recordedChunks = [];
+    let recordStartTime;
+    let recordTimerInterval;
 
     function togglePlay() {
       if (!isPlaying) {
@@ -159,13 +179,73 @@
     function updateTime() {
       const now = new Date();
       const localTime = now.toLocaleTimeString();
-      const utcTime = now.toUTCString().split(' ')[4]; // extract just HH:MM:SS
+      const utcTime = now.toUTCString().split(' ')[4];
       document.getElementById('localTime').textContent = localTime;
       document.getElementById('utcTime').textContent = utcTime;
     }
 
     setInterval(updateTime, 1000);
-    updateTime(); // Initial call
+    updateTime();
+
+    async function toggleRecording() {
+      if (mediaRecorder && mediaRecorder.state === 'recording') {
+        mediaRecorder.stop();
+        recordBtn.textContent = 'Start Recording';
+        clearInterval(recordTimerInterval);
+        recordTimer.style.display = 'none';
+        return;
+      }
+
+      try {
+        const stream = await captureStreamFromAudio(radio);
+        mediaRecorder = new MediaRecorder(stream);
+        recordedChunks = [];
+
+        mediaRecorder.ondataavailable = event => {
+          if (event.data.size > 0) {
+            recordedChunks.push(event.data);
+          }
+        };
+
+        mediaRecorder.onstop = () => {
+          const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+          const url = URL.createObjectURL(blob);
+          downloadLink.href = url;
+          downloadLink.style.display = 'inline-block';
+          downloadLink.textContent = 'Download Recording';
+        };
+
+        mediaRecorder.start();
+        recordBtn.textContent = 'Stop Recording';
+        downloadLink.style.display = 'none';
+
+        recordStartTime = Date.now();
+        recordTimer.style.display = 'block';
+        updateRecordTimer();
+        recordTimerInterval = setInterval(updateRecordTimer, 1000);
+
+      } catch (err) {
+        console.error('Error recording audio:', err);
+        alert('Recording failed. Your browser may not support MediaRecorder or the stream is blocked.');
+      }
+    }
+
+    function captureStreamFromAudio(audioElement) {
+      if (audioElement.captureStream) {
+        return Promise.resolve(audioElement.captureStream());
+      } else if (audioElement.mozCaptureStream) {
+        return Promise.resolve(audioElement.mozCaptureStream());
+      } else {
+        return Promise.reject(new Error('Stream capture is not supported in this browser.'));
+      }
+    }
+
+    function updateRecordTimer() {
+      const elapsed = Math.floor((Date.now() - recordStartTime) / 1000);
+      const minutes = String(Math.floor(elapsed / 60)).padStart(2, '0');
+      const seconds = String(elapsed % 60).padStart(2, '0');
+      recordTimer.textContent = `Recording Time: ${minutes}:${seconds}`;
+    }
   </script>
 
 </body>
