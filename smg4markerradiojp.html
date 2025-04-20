@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>EVENT OF SMG4 RADIO SMG4 MARKER RADIO</title>
+  <title>SMG4 RADIO SMG4 MARKER RADIOのイベント</title>
   <meta name="author" content="SMG4 Radio">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="description" content="OFFICIAL EVENT BY SMG4 RADIO">
-  <meta name="keywords" content="SMG4 Radio, радио онлайн, слушать радио, EVENT, музыка онлайн, интернет-радио, популярные треки 2025, эксклюзивные треки, радиостанция SMG4 Marker Radio, танцевальная музыка онлайн, радио для вечеринок, слушать музыку бесплатно, музыкальное радио онлайн">
+  <meta name="description" content="SMG4 RADIOによる公式イベント">
+  <meta name="keywords" content="SMG4 Radio, オンラインラジオ, ラジオを聞く, イベント, 音楽オンライン, インターネットラジオ, 人気トラック 2025, 独占トラック, SMG4 Marker Radioラジオステーション, ダンスミュージックオンライン, パーティー用ラジオ, 無料で音楽を聴く, 音楽ラジオオンライン">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="SMG4 Marker Radio — Слушать онлайн">
-  <meta property="og:description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta property="og:title" content="SMG4 Marker Radio — オンラインで聴く">
+  <meta property="og:description" content="SMG4 RADIOによる公式イベント">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg">
   <meta property="og:url" content="https://smg4radiobetawebv2.pages.dev/">
@@ -18,8 +18,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SMG4 Marker Radio — Слушать онлайн">
-  <meta name="twitter:description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta name="twitter:title" content="SMG4 Marker Radio — オンラインで聴く">
+  <meta name="twitter:description" content="SMG4 RADIOによる公式イベント">
   <meta name="twitter:image" content="https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg">
 
   <!-- schema.org -->
@@ -29,8 +29,8 @@
     "@type": "RadioStation",
     "name": "SMG4 Marker Radio",
     "url": "https://smg4radiobetawebv2.pages.dev/",
-    "genre": "Event, Electronic, Dance",
-    "description": "OFFICIAL EVENT BY SMG4 RADIO",
+    "genre": "イベント, エレクトロニック, ダンス",
+    "description": "SMG4 RADIOによる公式イベント",
     "image": "https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg",
     "sameAs": [
       "https://smg4radiobetawebv2.pages.dev/"
@@ -120,13 +120,13 @@
 
   <!-- Language Selector -->
   <div class="lang-selector">
-    <label for="languageSelect">🌐 Pick a language:</label>
+    <label for="languageSelect">🌐 言語を選択：</label>
     <select id="languageSelect" onchange="changeLanguage(this.value)">
-      <option value="ru">Русский</option>
-      <option value="en" selected>English</option>
-      <option value="de"> Deutsch </option>
-      <option value="jp">日本</option>
-      <option value="pl">polski</option>
+      <option value="ru">ロシア語</option>
+      <option value="en">英語</option>
+      <option value="de">ドイツ語</option>
+      <option value="jp" selected>日本語</option>
+      <option value="pl">ポーランド語</option>
     </select>
   </div>
 
@@ -134,24 +134,24 @@
     <img class="logo" src="./SMG4_2023.svg" alt="SMG4 Logo">
     <h2>SMG4 MARKER RADIO</h2>
 
-    <button class="play-btn" onclick="togglePlay()">Play</button>
-    <button class="play-btn" id="recordBtn" onclick="toggleRecording()">Start Recording</button>
+    <button class="play-btn" onclick="togglePlay()">再生</button>
+    <button class="play-btn" id="recordBtn" onclick="toggleRecording()">録音開始</button>
     
     <audio id="radio" src="https://stream.zeno.fm/drhagg7ds1ltv" type="audio/mpeg"></audio>
 
-    <label for="volume">Volume Control</label>
+    <label for="volume">音量調整</label>
     <input type="range" id="volume" class="volume-control" min="0" max="1" step="0.01" value="1">
-    <p>Громкость: <span id="volumeValue">100%</span></p>
+    <p>音量: <span id="volumeValue">100%</span></p>
 
-    <p id="recordTimer" style="display:none;">Recording Time: 00:00</p>
-    <a id="downloadLink" style="display:none;" download="radio_recording.webm">Download Recording</a>
+    <p id="recordTimer" style="display:none;">録音時間: 00:00</p>
+    <a id="downloadLink" style="display:none;" download="radio_recording.webm">録音をダウンロード</a>
 
     <div class="time-info">
-      <p>Local Time: <span id="localTime"></span></p>
-      <p>UTC Time: <span id="utcTime"></span></p>
+      <p>現地時間: <span id="localTime"></span></p>
+      <p>UTC時間: <span id="utcTime"></span></p>
     </div>
     
-    <a href="index.html">back</a>
+    <a href="index.html">戻る</a>
     <a href="https://discord.gg/PeafwRcHKE">Discord</a>
   </div>
 
@@ -182,10 +182,10 @@
     function togglePlay() {
       if (!isPlaying) {
         radio.play();
-        button.textContent = 'Pause';
+        button.textContent = '一時停止';
       } else {
         radio.pause();
-        button.textContent = 'Play';
+        button.textContent = '再生';
       }
       isPlaying = !isPlaying;
     }
@@ -209,7 +209,7 @@
     async function toggleRecording() {
       if (mediaRecorder && mediaRecorder.state === 'recording') {
         mediaRecorder.stop();
-        recordBtn.textContent = 'Start Recording';
+        recordBtn.textContent = '録音開始';
         clearInterval(recordTimerInterval);
         recordTimer.style.display = 'none';
         return;
@@ -231,11 +231,11 @@
           const url = URL.createObjectURL(blob);
           downloadLink.href = url;
           downloadLink.style.display = 'inline-block';
-          downloadLink.textContent = 'Download Recording';
+          downloadLink.textContent = '録音をダウンロード';
         };
 
         mediaRecorder.start();
-        recordBtn.textContent = 'Stop Recording';
+        recordBtn.textContent = '録音停止';
         downloadLink.style.display = 'none';
 
         recordStartTime = Date.now();
@@ -244,8 +244,8 @@
         recordTimerInterval = setInterval(updateRecordTimer, 1000);
 
       } catch (err) {
-        console.error('Error recording audio:', err);
-        alert('Recording failed. Your browser may not support MediaRecorder or the stream is blocked.');
+        console.error('録音エラー:', err);
+        alert('録音に失敗しました。ブラウザがMediaRecorderに対応していないか、ストリームがブロックされている可能性があります。');
       }
     }
 
@@ -255,7 +255,7 @@
       } else if (audioElement.mozCaptureStream) {
         return Promise.resolve(audioElement.mozCaptureStream());
       } else {
-        return Promise.reject(new Error('Stream capture is not supported in this browser.'));
+        return Promise.reject(new Error('ストリームキャプチャはこのブラウザでサポートされていません。'));
       }
     }
 
@@ -263,22 +263,22 @@
       const elapsed = Math.floor((Date.now() - recordStartTime) / 1000);
       const minutes = String(Math.floor(elapsed / 60)).padStart(2, '0');
       const seconds = String(elapsed % 60).padStart(2, '0');
-      recordTimer.textContent = `Recording Time: ${minutes}:${seconds}`;
+      recordTimer.textContent = `録音時間: ${minutes}:${seconds}`;
     }
 
-function changeLanguage(lang) {
-  if (lang === 'en') {
-    window.location.href = 'smg4markerradio.html'; // Default English version
-  } else if (lang === 'ru') {
-    window.location.href = './smg4markerradioru.html'; // Russian version
-  } else if (lang === 'pl') {
-    window.location.href = './smg4markerradiopl.html'; // Polish version
-  } else if (lang === 'jp') {
-    window.location.href = './smg4markerradiojp.html'; // Japanese version
-  } else if (lang === 'de') {
-    window.location.href = './smg4markerradiode.html'; // German version
-  }
-}
+    function changeLanguage(lang) {
+      if (lang === 'en') {
+        window.location.href = 'smg4markerradio.html'; // Default English version
+      } else if (lang === 'ru') {
+        window.location.href = './smg4markerradioru.html'; // Russian version
+      } else if (lang === 'pl') {
+        window.location.href = './smg4markerradiopl.html'; // Polish version
+      } else if (lang === 'jp') {
+        window.location.href = './smg4markerradiojp.html'; // Japanese version
+      } else if (lang === 'de') {
+        window.location.href = './smg4markerradiode.html'; // German version
+      }
+    }
 
   </script>
 
