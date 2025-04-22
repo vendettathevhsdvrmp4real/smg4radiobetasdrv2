@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>EVENT OF SMG4 RADIO SMG4 MARKER RADIO</title>
+  <title>SMG4 RADIO SMG4 MARKER RADIO - wydarzenie</title>
   <meta name="author" content="SMG4 Radio">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="description" content="OFFICIAL EVENT BY SMG4 RADIO">
-  <meta name="keywords" content="SMG4 Radio, радио онлайн, слушать радио, EVENT, музыка онлайн, интернет-радио, популярные треки 2025, эксклюзивные треки, радиостанция SMG4 Marker Radio, танцевальная музыка онлайн, радио для вечеринок, слушать музыку бесплатно, музыкальное радио онлайн">
+  <meta name="description" content="Oficjalne wydarzenie SMG4 RADIO">
+  <meta name="keywords" content="SMG4 Radio, radio online, słuchanie radia, wydarzenie, muzyka online, radio internetowe, popularne utwory 2025, ekskluzywne utwory, SMG4 Marker Radio, muzyka elektroniczna, radio do tańczenia, radio do imprezy, darmowe słuchanie muzyki, radio online">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="SMG4 Marker Radio — Слушать онлайн">
-  <meta property="og:description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta property="og:title" content="SMG4 Marker Radio — Słuchaj online">
+  <meta property="og:description" content="Oficjalne wydarzenie SMG4 RADIO">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg">
   <meta property="og:url" content="https://smg4radiobetawebv2.pages.dev/">
@@ -18,8 +18,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SMG4 Marker Radio — Слушать онлайн">
-  <meta name="twitter:description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta name="twitter:title" content="SMG4 Marker Radio — Słuchaj online">
+  <meta name="twitter:description" content="Oficjalne wydarzenie SMG4 RADIO">
   <meta name="twitter:image" content="https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg">
 
   <!-- schema.org -->
@@ -29,8 +29,8 @@
     "@type": "RadioStation",
     "name": "SMG4 Marker Radio",
     "url": "https://smg4radiobetawebv2.pages.dev/",
-    "genre": "Event, Electronic, Dance",
-    "description": "OFFICIAL EVENT BY SMG4 RADIO",
+    "genre": "Wydarzenie, Elektronika, Dance",
+    "description": "Oficjalne wydarzenie SMG4 RADIO",
     "image": "https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg",
     "sameAs": [
       "https://smg4radiobetawebv2.pages.dev/"
@@ -120,13 +120,13 @@
 
   <!-- Language Selector -->
   <div class="lang-selector">
-    <label for="languageSelect">🌐 Pick a language:</label>
+    <label for="languageSelect">🌐 Wybierz język:</label>
     <select id="languageSelect" onchange="changeLanguage(this.value)">
       <option value="ru">Русский</option>
-      <option value="en" selected>English</option>
+      <option value="en">English</option>
       <option value="de"> Deutsch </option>
       <option value="jp">日本</option>
-      <option value="pl">polski</option>
+      <option value="pl" selected>polski</option>
       <option value="fi">suomi</option>
       <option value="kr">한국어</option>
       <option value="tr">Türkçe</option>
@@ -135,27 +135,27 @@
   </div>
 
   <div class="radio-player">
-    <img class="logo" src="./SMG4_2023.svg" alt="SMG4 Logo">
+    <img class="logo" src="./SMG4_2023.svg" alt="Logo SMG4">
     <h2>SMG4 MARKER RADIO</h2>
 
-    <button class="play-btn" onclick="togglePlay()">Play</button>
-    <button class="play-btn" id="recordBtn" onclick="toggleRecording()">Start Recording</button>
+    <button class="play-btn" onclick="togglePlay()">Odtwórz</button>
+    <button class="play-btn" id="recordBtn" onclick="toggleRecording()">Rozpocznij nagrywanie</button>
     
     <audio id="radio" src="https://stream.zeno.fm/drhagg7ds1ltv" type="audio/mpeg"></audio>
 
-    <label for="volume">Volume Control</label>
+    <label for="volume">Regulacja głośności</label>
     <input type="range" id="volume" class="volume-control" min="0" max="1" step="0.01" value="1">
-    <p>Громкость: <span id="volumeValue">100%</span></p>
+    <p>Głośność: <span id="volumeValue">100%</span></p>
 
-    <p id="recordTimer" style="display:none;">Recording Time: 00:00</p>
-    <a id="downloadLink" style="display:none;" download="radio_recording.webm">Download Recording</a>
+    <p id="recordTimer" style="display:none;">Czas nagrywania: 00:00</p>
+    <a id="downloadLink" style="display:none;" download="radio_recording.webm">Pobierz nagranie</a>
 
     <div class="time-info">
-      <p>Local Time: <span id="localTime"></span></p>
-      <p>UTC Time: <span id="utcTime"></span></p>
+      <p>Czas lokalny: <span id="localTime"></span></p>
+      <p>Czas UTC: <span id="utcTime"></span></p>
     </div>
     
-    <a href="index.html">back</a>
+    <a href="index.html">Wróć</a>
     <a href="https://discord.gg/PeafwRcHKE">Discord</a>
   </div>
 
@@ -186,10 +186,10 @@
     function togglePlay() {
       if (!isPlaying) {
         radio.play();
-        button.textContent = 'Pause';
+        button.textContent = 'Pauza';
       } else {
         radio.pause();
-        button.textContent = 'Play';
+        button.textContent = 'Odtwórz';
       }
       isPlaying = !isPlaying;
     }
@@ -213,7 +213,7 @@
     async function toggleRecording() {
       if (mediaRecorder && mediaRecorder.state === 'recording') {
         mediaRecorder.stop();
-        recordBtn.textContent = 'Start Recording';
+        recordBtn.textContent = 'Rozpocznij nagrywanie';
         clearInterval(recordTimerInterval);
         recordTimer.style.display = 'none';
         return;
@@ -235,11 +235,11 @@
           const url = URL.createObjectURL(blob);
           downloadLink.href = url;
           downloadLink.style.display = 'inline-block';
-          downloadLink.textContent = 'Download Recording';
+          downloadLink.textContent = 'Pobierz nagranie';
         };
 
         mediaRecorder.start();
-        recordBtn.textContent = 'Stop Recording';
+        recordBtn.textContent = 'Zatrzymaj nagrywanie';
         downloadLink.style.display = 'none';
 
         recordStartTime = Date.now();
@@ -248,8 +248,8 @@
         recordTimerInterval = setInterval(updateRecordTimer, 1000);
 
       } catch (err) {
-        console.error('Error recording audio:', err);
-        alert('Recording failed. Your browser may not support MediaRecorder or the stream is blocked.');
+        console.error('Błąd nagrywania:', err);
+        alert('Nie udało się rozpocząć nagrywania. Twoja przeglądarka może nie obsługiwać funkcji MediaRecorder lub strumień może być zablokowany.');
       }
     }
 
@@ -259,7 +259,7 @@
       } else if (audioElement.mozCaptureStream) {
         return Promise.resolve(audioElement.mozCaptureStream());
       } else {
-        return Promise.reject(new Error('Stream capture is not supported in this browser.'));
+        return Promise.reject(new Error('Ta przeglądarka nie obsługuje nagrywania strumieniowego.'));
       }
     }
 
@@ -267,32 +267,30 @@
       const elapsed = Math.floor((Date.now() - recordStartTime) / 1000);
       const minutes = String(Math.floor(elapsed / 60)).padStart(2, '0');
       const seconds = String(elapsed % 60).padStart(2, '0');
-      recordTimer.textContent = `Recording Time: ${minutes}:${seconds}`;
+      recordTimer.textContent = `Czas nagrywania: ${minutes}:${seconds}`;
     }
 
-
-  function changeLanguage(lang) {
-    if (lang === 'en') {
-      window.location.href = 'smg4markerradio.html'; // English
-    } else if (lang === 'ru') {
-      window.location.href = './smg4markerradioru.html'; // Russian
-    } else if (lang === 'pl') {
-      window.location.href = './smg4markerradiopl.html'; // Polish
-    } else if (lang === 'jp') {
-      window.location.href = './smg4markerradiojp.html'; // Japanese
-    } else if (lang === 'de') {
-      window.location.href = './smg4markerradiode.html'; // German
-    } else if (lang === 'fi') {
-      window.location.href = './smg4markerradiofi.html'; // Finnish
-    } else if (lang === 'kr') {
-      window.location.href = './smg4markerradioko.html'; // Korean
-    } else if (lang === 'tr') {
-      window.location.href = './smg4markerradiotr.html'; // Turkish
-    } else if (lang === 'fr') {
-      window.location.href = './smg4markerradiofr.html'; // French
+    function changeLanguage(lang) {
+      if (lang === 'en') {
+        window.location.href = 'smg4markerradio.html';
+      } else if (lang === 'ru') {
+        window.location.href = './smg4markerradioru.html';
+      } else if (lang === 'pl') {
+        window.location.href = './smg4markerradiopl.html';
+      } else if (lang === 'jp') {
+        window.location.href = './smg4markerradiojp.html';
+      } else if (lang === 'de') {
+        window.location.href = './smg4markerradiode.html';
+      } else if (lang === 'fi') {
+        window.location.href = './smg4markerradiofi.html';
+      } else if (lang === 'kr') {
+        window.location.href = './smg4markerradioko.html';
+      } else if (lang === 'tr') {
+        window.location.href = './smg4markerradiotr.html';
+      } else if (lang === 'fr') {
+        window.location.href = './smg4markerradiofr.html';
+      }
     }
-  }
-
   </script>
 
 </body>

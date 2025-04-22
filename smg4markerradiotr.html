@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>EVENT OF SMG4 RADIO SMG4 MARKER RADIO</title>
-  <meta name="author" content="SMG4 Radio">
+  <title>Etkinlik — SMG4 Marker Radyo</title>
+  <meta name="author" content="SMG4 Radyo">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="description" content="OFFICIAL EVENT BY SMG4 RADIO">
-  <meta name="keywords" content="SMG4 Radio, радио онлайн, слушать радио, EVENT, музыка онлайн, интернет-радио, популярные треки 2025, эксклюзивные треки, радиостанция SMG4 Marker Radio, танцевальная музыка онлайн, радио для вечеринок, слушать музыку бесплатно, музыкальное радио онлайн">
+  <meta name="description" content="SMG4 Radyo'nun resmi etkinliği">
+  <meta name="keywords" content="SMG4 Radyo, internet radyo, radyo dinle, etkinlik, online müzik, internet radyo yayını, 2025 hit şarkılar, özel parçalar, SMG4 Marker Radyo istasyonu, online dans müziği, parti müziği, ücretsiz müzik dinle, online müzik radyo">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="SMG4 Marker Radio — Слушать онлайн">
-  <meta property="og:description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta property="og:title" content="SMG4 Marker Radyo — Online Dinle">
+  <meta property="og:description" content="SMG4 Radyo'nun resmi etkinliği">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg">
   <meta property="og:url" content="https://smg4radiobetawebv2.pages.dev/">
-  <meta property="og:site_name" content="SMG4 Marker Radio">
+  <meta property="og:site_name" content="SMG4 Marker Radyo">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SMG4 Marker Radio — Слушать онлайн">
-  <meta name="twitter:description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta name="twitter:title" content="SMG4 Marker Radyo — Online Dinle">
+  <meta name="twitter:description" content="SMG4 Radyo'nun resmi etkinliği">
   <meta name="twitter:image" content="https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg">
 
   <!-- schema.org -->
@@ -27,10 +27,10 @@
   {
     "@context": "https://schema.org",
     "@type": "RadioStation",
-    "name": "SMG4 Marker Radio",
+    "name": "SMG4 Marker Radyo",
     "url": "https://smg4radiobetawebv2.pages.dev/",
-    "genre": "Event, Electronic, Dance",
-    "description": "OFFICIAL EVENT BY SMG4 RADIO",
+    "genre": "Etkinlik, Elektronik, Dans",
+    "description": "SMG4 Radyo'nun resmi etkinliği",
     "image": "https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg",
     "sameAs": [
       "https://smg4radiobetawebv2.pages.dev/"
@@ -49,7 +49,6 @@
   <meta name="msapplication-TileColor" content="#181818">
   <meta name="theme-color" content="#181818">
 
-  <!-- Styles -->
   <style>
     body {
       background: #111;
@@ -118,56 +117,54 @@
 
 <body>
 
-  <!-- Language Selector -->
   <div class="lang-selector">
-    <label for="languageSelect">🌐 Pick a language:</label>
+    <label for="languageSelect">🌐 Dil Seç:</label>
     <select id="languageSelect" onchange="changeLanguage(this.value)">
+      <option value="tr" selected>Türkçe</option>
+      <option value="en">English</option>
       <option value="ru">Русский</option>
-      <option value="en" selected>English</option>
-      <option value="de"> Deutsch </option>
-      <option value="jp">日本</option>
-      <option value="pl">polski</option>
-      <option value="fi">suomi</option>
-      <option value="kr">한국어</option>
-      <option value="tr">Türkçe</option>
+      <option value="pl">Polski</option>
+      <option value="jp">日本語</option>
+      <option value="de">Deutsch</option>
+      <option value="fi">Suomi</option>
+      <option value="ko">한국어</option>
       <option value="fr">Français</option>
     </select>
   </div>
 
   <div class="radio-player">
     <img class="logo" src="./SMG4_2023.svg" alt="SMG4 Logo">
-    <h2>SMG4 MARKER RADIO</h2>
+    <h2>SMG4 Marker Radyo</h2>
 
-    <button class="play-btn" onclick="togglePlay()">Play</button>
-    <button class="play-btn" id="recordBtn" onclick="toggleRecording()">Start Recording</button>
-    
+    <button class="play-btn" onclick="togglePlay()">Oynat</button>
+    <button class="play-btn" id="recordBtn" onclick="toggleRecording()">Kaydı Başlat</button>
+
     <audio id="radio" src="https://stream.zeno.fm/drhagg7ds1ltv" type="audio/mpeg"></audio>
 
-    <label for="volume">Volume Control</label>
+    <label for="volume">Ses</label>
     <input type="range" id="volume" class="volume-control" min="0" max="1" step="0.01" value="1">
-    <p>Громкость: <span id="volumeValue">100%</span></p>
+    <p>Ses: <span id="volumeValue">100%</span></p>
 
-    <p id="recordTimer" style="display:none;">Recording Time: 00:00</p>
-    <a id="downloadLink" style="display:none;" download="radio_recording.webm">Download Recording</a>
+    <p id="recordTimer" style="display:none;">Kayıt Süresi: 00:00</p>
+    <a id="downloadLink" style="display:none;" download="radio_recording.webm">Kaydı İndir</a>
 
     <div class="time-info">
-      <p>Local Time: <span id="localTime"></span></p>
-      <p>UTC Time: <span id="utcTime"></span></p>
+      <p>Yerel Saat: <span id="localTime"></span></p>
+      <p>UTC Saati: <span id="utcTime"></span></p>
     </div>
-    
-    <a href="index.html">back</a>
+
+    <a href="index.html">Geri Dön</a>
     <a href="https://discord.gg/PeafwRcHKE">Discord</a>
   </div>
 
   <a href="https://info.flagcounter.com/Filz">
-    <img src="https://s01.flagcounter.com/count2/Filz/bg_FFFFFF/txt_000000/border_CCCCCC/columns_8/maxflags_40/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0">
+    <img src="https://s01.flagcounter.com/count2/Filz/bg_FFFFFF/txt_000000/border_CCCCCC/columns_8/maxflags_40/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Bayrak Sayacı" border="0">
   </a>
 
-  <a href="https://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!">
+  <a href="https://www.hamqsl.com/solar.html" title="Güneş Aktivitesi Bilgisi!">
     <img src="https://www.hamqsl.com/solar101vhfpic.php" style="max-width: 100%; width: 500px; height: auto;">
   </a>
 
-  <!-- Script -->
   <script>
     const radio = document.getElementById('radio');
     const button = document.querySelector('.play-btn');
@@ -186,10 +183,10 @@
     function togglePlay() {
       if (!isPlaying) {
         radio.play();
-        button.textContent = 'Pause';
+        button.textContent = 'Duraklat';
       } else {
         radio.pause();
-        button.textContent = 'Play';
+        button.textContent = 'Oynat';
       }
       isPlaying = !isPlaying;
     }
@@ -213,7 +210,7 @@
     async function toggleRecording() {
       if (mediaRecorder && mediaRecorder.state === 'recording') {
         mediaRecorder.stop();
-        recordBtn.textContent = 'Start Recording';
+        recordBtn.textContent = 'Kaydı Başlat';
         clearInterval(recordTimerInterval);
         recordTimer.style.display = 'none';
         return;
@@ -235,11 +232,11 @@
           const url = URL.createObjectURL(blob);
           downloadLink.href = url;
           downloadLink.style.display = 'inline-block';
-          downloadLink.textContent = 'Download Recording';
+          downloadLink.textContent = 'Kaydı İndir';
         };
 
         mediaRecorder.start();
-        recordBtn.textContent = 'Stop Recording';
+        recordBtn.textContent = 'Kaydı Durdur';
         downloadLink.style.display = 'none';
 
         recordStartTime = Date.now();
@@ -248,8 +245,8 @@
         recordTimerInterval = setInterval(updateRecordTimer, 1000);
 
       } catch (err) {
-        console.error('Error recording audio:', err);
-        alert('Recording failed. Your browser may not support MediaRecorder or the stream is blocked.');
+        console.error('Kayıt hatası:', err);
+        alert('Kayıt başlatılamadı. Tarayıcı MediaRecorder’ı desteklemiyor olabilir.');
       }
     }
 
@@ -259,7 +256,7 @@
       } else if (audioElement.mozCaptureStream) {
         return Promise.resolve(audioElement.mozCaptureStream());
       } else {
-        return Promise.reject(new Error('Stream capture is not supported in this browser.'));
+        return Promise.reject(new Error('Tarayıcı bu işlemi desteklemiyor.'));
       }
     }
 
@@ -267,32 +264,30 @@
       const elapsed = Math.floor((Date.now() - recordStartTime) / 1000);
       const minutes = String(Math.floor(elapsed / 60)).padStart(2, '0');
       const seconds = String(elapsed % 60).padStart(2, '0');
-      recordTimer.textContent = `Recording Time: ${minutes}:${seconds}`;
+      recordTimer.textContent = `Kayıt Süresi: ${minutes}:${seconds}`;
     }
 
-
-  function changeLanguage(lang) {
-    if (lang === 'en') {
-      window.location.href = 'smg4markerradio.html'; // English
-    } else if (lang === 'ru') {
-      window.location.href = './smg4markerradioru.html'; // Russian
-    } else if (lang === 'pl') {
-      window.location.href = './smg4markerradiopl.html'; // Polish
-    } else if (lang === 'jp') {
-      window.location.href = './smg4markerradiojp.html'; // Japanese
-    } else if (lang === 'de') {
-      window.location.href = './smg4markerradiode.html'; // German
-    } else if (lang === 'fi') {
-      window.location.href = './smg4markerradiofi.html'; // Finnish
-    } else if (lang === 'kr') {
-      window.location.href = './smg4markerradioko.html'; // Korean
-    } else if (lang === 'tr') {
-      window.location.href = './smg4markerradiotr.html'; // Turkish
-    } else if (lang === 'fr') {
-      window.location.href = './smg4markerradiofr.html'; // French
+    function changeLanguage(lang) {
+      if (lang === 'en') {
+        window.location.href = 'smg4markerradio.html';
+      } else if (lang === 'ru') {
+        window.location.href = './smg4markerradioru.html';
+      } else if (lang === 'pl') {
+        window.location.href = './smg4markerradiopl.html';
+      } else if (lang === 'jp') {
+        window.location.href = './smg4markerradiojp.html';
+      } else if (lang === 'de') {
+        window.location.href = './smg4markerradiode.html';
+      } else if (lang === 'fi') {
+        window.location.href = './smg4markerradiofi.html';
+      } else if (lang === 'ko') {
+        window.location.href = './smg4markerradiokr.html';
+      } else if (lang === 'tr') {
+        window.location.href = './smg4markerradiotr.html';
+      } else if (lang === 'fr') {
+        window.location.href = './smg4markerradiofr.html';
+      }
     }
-  }
-
   </script>
 
 </body>
