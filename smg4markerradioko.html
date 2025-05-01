@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>EVENT OF SMG4 RADIO SMG4 MARKER RADIO</title>
-  <meta name="author" content="SMG4 Radio">
+  <title>이벤트 — SMG4 마커 라디오</title>
+  <meta name="author" content="SMG4 라디오">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="description" content="OFFICIAL EVENT BY SMG4 RADIO">
-  <meta name="keywords" content="SMG4 Radio, радио онлайн, слушать радио, EVENT, музыка онлайн, интернет-радио, популярные треки 2025, эксклюзивные треки, радиостанция SMG4 Marker Radio, танцевальная музыка онлайн, радио для вечеринок, слушать музыку бесплатно, музыкальное радио онлайн">
+  <meta name="description" content="SMG4 라디오의 공식 이벤트">
+  <meta name="keywords" content="SMG4 라디오, 인터넷 라디오, 라디오 듣기, 이벤트, 온라인 음악, 인터넷 라디오 방송, 2025 인기곡, 독점 트랙, SMG4 마커 라디오 방송국, 온라인 댄스 음악, 파티 음악, 무료 음악 듣기, 온라인 음악 라디오">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="SMG4 Marker Radio — Слушать онлайн">
-  <meta property="og:description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta property="og:title" content="SMG4 마커 라디오 — 온라인으로 듣기">
+  <meta property="og:description" content="SMG4 라디오의 공식 이벤트">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg">
   <meta property="og:url" content="https://smg4radiobetawebv2.pages.dev/">
-  <meta property="og:site_name" content="SMG4 Marker Radio">
+  <meta property="og:site_name" content="SMG4 마커 라디오">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SMG4 Marker Radio — Слушать онлайн">
-  <meta name="twitter:description" content="OFFICIAL EVENT BY SMG4 RADIO">
+  <meta name="twitter:title" content="SMG4 마커 라디오 — 온라인으로 듣기">
+  <meta name="twitter:description" content="SMG4 라디오의 공식 이벤트">
   <meta name="twitter:image" content="https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg">
 
   <!-- schema.org -->
@@ -27,10 +27,10 @@
   {
     "@context": "https://schema.org",
     "@type": "RadioStation",
-    "name": "SMG4 Marker Radio",
+    "name": "SMG4 마커 라디오",
     "url": "https://smg4radiobetawebv2.pages.dev/",
-    "genre": "Event, Electronic, Dance",
-    "description": "OFFICIAL EVENT BY SMG4 RADIO",
+    "genre": "이벤트, 일렉트로닉, 댄스",
+    "description": "SMG4 라디오의 공식 이벤트",
     "image": "https://smg4radiobetawebv2.pages.dev/SMG4_2023.svg",
     "sameAs": [
       "https://smg4radiobetawebv2.pages.dev/"
@@ -49,7 +49,6 @@
   <meta name="msapplication-TileColor" content="#181818">
   <meta name="theme-color" content="#181818">
 
-  <!-- Styles -->
   <style>
     body {
       background: #111;
@@ -118,57 +117,55 @@
 
 <body>
 
-  <!-- Language Selector -->
   <div class="lang-selector">
-    <label for="languageSelect">🌐 Pick a language:</label>
+    <label for="languageSelect">🌐 언어 선택:</label>
     <select id="languageSelect" onchange="changeLanguage(this.value)">
+      <option value="ko" selected>한국어</option>
+      <option value="en">English</option>
       <option value="ru">Русский</option>
-      <option value="en" selected>English</option>
-      <option value="de"> Deutsch </option>
-      <option value="jp">日本</option>
-      <option value="pl">polski</option>
-      <option value="fi">suomi</option>
-      <option value="kr">한국어</option>
+      <option value="pl">Polski</option>
+      <option value="jp">日本語</option>
+      <option value="de">Deutsch</option>
+      <option value="fi">Suomi</option>
       <option value="tr">Türkçe</option>
       <option value="fr">Français</option>
     </select>
   </div>
 
   <div class="radio-player">
-    <img class="logo" src="./SMG4_2023.svg" alt="SMG4 Logo">
-    <h2>SMG4 MARKER RADIO</h2>
+    <img class="logo" src="./SMG4_2023.svg" alt="SMG4 로고">
+    <h2>SMG4 마커 라디오</h2>
 
-    <button class="play-btn" onclick="togglePlay()">Play</button>
-    <button class="play-btn" id="recordBtn" onclick="toggleRecording()">Start Recording</button>
-    
+    <button class="play-btn" onclick="togglePlay()">재생</button>
+    <button class="play-btn" id="recordBtn" onclick="toggleRecording()">녹음 시작</button>
+
     <audio id="radio" src="https://stream.zeno.fm/drhagg7ds1ltv" type="audio/mpeg"></audio>
 
-    <label for="volume">Volume Control</label>
+    <label for="volume">볼륨</label>
     <input type="range" id="volume" class="volume-control" min="0" max="1" step="0.01" value="1">
-    <p>Громкость: <span id="volumeValue">100%</span></p>
+    <p>볼륨: <span id="volumeValue">100%</span></p>
 
-    <p id="recordTimer" style="display:none;">Recording Time: 00:00</p>
-    <a id="downloadLink" style="display:none;" download="radio_recording.webm">Download Recording</a>
+    <p id="recordTimer" style="display:none;">녹음 시간: 00:00</p>
+    <a id="downloadLink" style="display:none;" download="radio_recording.webm">녹음 다운로드</a>
 
     <div class="time-info">
-      <p>Local Time: <span id="localTime"></span></p>
-      <p>UTC Time: <span id="utcTime"></span></p>
+      <p>현재 시간: <span id="localTime"></span></p>
+      <p>UTC 시간: <span id="utcTime"></span></p>
     </div>
-    
-    <a href="index.html">back</a>
-    <a href="https://discord.gg/PeafwRcHKE">Discord</a>
+
+    <a href="index.html">뒤로가기</a>
+    <a href="https://discord.gg/PeafwRcHKE">디스코드</a>
     <a href="https://smg4archivepages.pages.dev/">SMG4 ARCHIVE PAGES</a>
   </div>
 
   <a href="https://info.flagcounter.com/Filz">
-    <img src="https://s01.flagcounter.com/count2/Filz/bg_FFFFFF/txt_000000/border_CCCCCC/columns_8/maxflags_40/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0">
+    <img src="https://s01.flagcounter.com/count2/Filz/bg_FFFFFF/txt_000000/border_CCCCCC/columns_8/maxflags_40/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="국기 카운터" border="0">
   </a>
 
-  <a href="https://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!">
+  <a href="https://www.hamqsl.com/solar.html" title="태양 활동 정보 추가하기!">
     <img src="https://www.hamqsl.com/solar101vhfpic.php" style="max-width: 100%; width: 500px; height: auto;">
   </a>
 
-  <!-- Script -->
   <script>
     const radio = document.getElementById('radio');
     const button = document.querySelector('.play-btn');
@@ -187,10 +184,10 @@
     function togglePlay() {
       if (!isPlaying) {
         radio.play();
-        button.textContent = 'Pause';
+        button.textContent = '일시정지';
       } else {
         radio.pause();
-        button.textContent = 'Play';
+        button.textContent = '재생';
       }
       isPlaying = !isPlaying;
     }
@@ -214,7 +211,7 @@
     async function toggleRecording() {
       if (mediaRecorder && mediaRecorder.state === 'recording') {
         mediaRecorder.stop();
-        recordBtn.textContent = 'Start Recording';
+        recordBtn.textContent = '녹음 시작';
         clearInterval(recordTimerInterval);
         recordTimer.style.display = 'none';
         return;
@@ -236,11 +233,11 @@
           const url = URL.createObjectURL(blob);
           downloadLink.href = url;
           downloadLink.style.display = 'inline-block';
-          downloadLink.textContent = 'Download Recording';
+          downloadLink.textContent = '녹음 다운로드';
         };
 
         mediaRecorder.start();
-        recordBtn.textContent = 'Stop Recording';
+        recordBtn.textContent = '녹음 중지';
         downloadLink.style.display = 'none';
 
         recordStartTime = Date.now();
@@ -249,8 +246,8 @@
         recordTimerInterval = setInterval(updateRecordTimer, 1000);
 
       } catch (err) {
-        console.error('Error recording audio:', err);
-        alert('Recording failed. Your browser may not support MediaRecorder or the stream is blocked.');
+        console.error('녹음 오류:', err);
+        alert('녹음을 시작할 수 없습니다. 브라우저에서 MediaRecorder를 지원하지 않거나 스트림을 캡처할 수 없습니다.');
       }
     }
 
@@ -260,7 +257,7 @@
       } else if (audioElement.mozCaptureStream) {
         return Promise.resolve(audioElement.mozCaptureStream());
       } else {
-        return Promise.reject(new Error('Stream capture is not supported in this browser.'));
+        return Promise.reject(new Error('브라우저가 오디오 캡처를 지원하지 않습니다.'));
       }
     }
 
@@ -268,32 +265,30 @@
       const elapsed = Math.floor((Date.now() - recordStartTime) / 1000);
       const minutes = String(Math.floor(elapsed / 60)).padStart(2, '0');
       const seconds = String(elapsed % 60).padStart(2, '0');
-      recordTimer.textContent = `Recording Time: ${minutes}:${seconds}`;
+      recordTimer.textContent = `녹음 시간: ${minutes}:${seconds}`;
     }
 
-
-  function changeLanguage(lang) {
-    if (lang === 'en') {
-      window.location.href = 'smg4markerradio.html'; // English
-    } else if (lang === 'ru') {
-      window.location.href = './smg4markerradioru.html'; // Russian
-    } else if (lang === 'pl') {
-      window.location.href = './smg4markerradiopl.html'; // Polish
-    } else if (lang === 'jp') {
-      window.location.href = './smg4markerradiojp.html'; // Japanese
-    } else if (lang === 'de') {
-      window.location.href = './smg4markerradiode.html'; // German
-    } else if (lang === 'fi') {
-      window.location.href = './smg4markerradiofi.html'; // Finnish
-    } else if (lang === 'kr') {
-      window.location.href = './smg4markerradioko.html'; // Korean
-    } else if (lang === 'tr') {
-      window.location.href = './smg4markerradiotr.html'; // Turkish
-    } else if (lang === 'fr') {
-      window.location.href = './smg4markerradiofr.html'; // French
+    function changeLanguage(lang) {
+      if (lang === 'en') {
+        window.location.href = 'smg4markerradio.html';
+      } else if (lang === 'ru') {
+        window.location.href = './smg4markerradioru.html';
+      } else if (lang === 'pl') {
+        window.location.href = './smg4markerradiopl.html';
+      } else if (lang === 'jp') {
+        window.location.href = './smg4markerradiojp.html';
+      } else if (lang === 'de') {
+        window.location.href = './smg4markerradiode.html';
+      } else if (lang === 'fi') {
+        window.location.href = './smg4markerradiofi.html';
+      } else if (lang === 'kr') {
+        window.location.href = './smg4markerradiokr.html';
+      } else if (lang === 'tr') {
+        window.location.href = './smg4markerradiotr.html';
+      } else if (lang === 'fr') {
+        window.location.href = './smg4markerradiofr.html';
+      }
     }
-  }
-
   </script>
 
 </body>
