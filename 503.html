@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>503 Service Unavailable</title>
+  <style>
+    body {
+      background-color: #6d6565;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 48px;
+      color: #000000;
+    }
+    p {
+      font-size: 20px;
+      color: #000000;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>503 Service Unavailable</h1>
+  <p>Sorry, we're currently, going maintenance, please check later.</p>
+  <img src="error500.png" alt="Maintenance Image">
+  <a href="https://discord.gg/PeafwRcHKE">Discord</a>
+  <div id="datetime"></div>
+  <a href="https://bsky.app/profile/smg4radiosdroff.bsky.social">Bluesky</a>
+  <button onclick="location.reload()">Try Again</button>
+
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const options = {
+        weekday: 'long', year: 'numeric', month: 'long',
+        day: 'numeric', hour: '2-digit', minute: '2-digit',
+        second: '2-digit', timeZoneName: 'short'
+      };
+      document.getElementById('datetime').textContent = 
+        'Current time: ' + now.toLocaleString(undefined, options);
+    }
+
+    updateDateTime();
+  </script>
+</body>
+</html>
