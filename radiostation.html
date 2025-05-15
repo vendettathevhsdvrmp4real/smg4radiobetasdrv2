@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="stylesheet.css?v=31">
+    <link id="theme-link" rel="stylesheet" href="./themespack/smg4/style.css" />
 </head>
 <body>
     <header>
-        <img src="SMG4_2023.svg"><h2>SMG4 Radio: Pre-alpha v2</h2><h3></h3>
+        <div class="logo-container" style="width: 200px; height: auto;">
+        <img id="logo" class="logo" src="./themespack/smg4/logo.png" alt="Logo" />
+        </div>
+        <h2>SMG4 Radio: Pre-alpha v2</h2><h3></h3>
     </header>
     <center>
         <a href="https://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!">
@@ -64,6 +67,14 @@
     <a href="https://bsky.app/profile/smg4radiosdroff.bsky.social">Bluesky</a>
     <a href="https://smg4-radio-sdr.fandom.com/">Wiki</a>
 
+      <h1>Theme Packs:</h1>
+
+        <select id="themeSelector">
+            <option value="smg3">SMG3 (by User1PS4 vendettathevhsdvr)</option>
+            <option value="mrpuzzles">Mr. Puzzles (by User1PS4 vendettathevhsdvr)</option>
+            <option value="smg4">SMG4 (by User1PS4 vendettathevhsdvr)</option>
+        </select>
+
     <script src="main.js?v=65"></script>
 
     <script>
@@ -97,6 +108,17 @@
             audioElement.volume = this.value;
             document.getElementById('volumeValue').textContent = Math.round(this.value * 100) + '%';
         });
+
+
+  const themeLink = document.getElementById('theme-link');
+  const logoImage = document.getElementById('logo');
+  const selector = document.getElementById('themeSelector');
+
+  selector.addEventListener('change', function () {
+    const themeName = selector.value;
+    themeLink.setAttribute('href', `themespack/${themeName}/style.css`);
+    logoImage.setAttribute('src', `themespack/${themeName}/logo.png`);
+  });
     </script>
 </body>
 </html>
