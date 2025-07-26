@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="stylesheet.css?v=31">
+    <link id="theme-link" rel="stylesheet" href="./themespack/smg4/style.css" />
+             <meta http-equiv="refresh" content="0; url=https://smg4radiobetawebv2.pages.dev/notavailable" />
 </head>
 <body>
     <header>
-        <img src="SMG4_2023.svg"><h2>SMG4 Radio: Pre-alpha v2</h2><h3></h3>
+        <div class="logo-container" style="width: 200px; height: auto;">
+        <img id="logo" class="logo" src="./themespack/smg4/logo.png" alt="Logo" />
+        </div>
+        <h2>SMG4 Radio: Pre-alpha v2</h2><h3></h3>
     </header>
     <center>
         <a href="https://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!">
@@ -36,7 +40,7 @@
             <h2>Radio Stations</h2>
             <div class="listing radio-station">
                 <ul id="radioList">
-                    <li data-url="http://radio-holding.ru:9000/marusya_default">Маруся ФМ <button class="playBtn">Play</button> <button class="pauseBtn">Pause</button></li>
+                    <li data-url="https://rp.amgradio.ru//RuWave48">Маруся ФМ <button class="playBtn">Play</button> <button class="pauseBtn">Pause</button></li>
                     <li data-url="https://stream.zeno.fm/dilmstb73pbtv">Don Pollo Ahh FM <button class="playBtn">Play</button> <button class="pauseBtn">Pause</button></li>
                     <li data-url="https://dfm.hostingradio.ru//dfm96.aacp">DFM Радио <button class="playBtn">Play</button> <button class="pauseBtn">Pause</button></li>
                     <li data-url="http://ep128.hostingradio.ru:8030/ep128">Europa Plus FM <button class="playBtn">Play</button> <button class="pauseBtn">Pause</button></li>
@@ -44,7 +48,7 @@
                     <li data-url="https://stream.gakku.kz:8443/love128.mp3">Love Радио <button class="playBtn">Play</button> <button class="pauseBtn">Pause</button></li>
                     <li data-url="https://srv21.gpmradio.ru:8443/stream/air/aac/64/100">Авторадио <button class="playBtn">Play</button> <button class="pauseBtn">Pause</button></li>
                     <li data-url="https://radiorecord.hostingradio.ru//rr_main96.aacp">Радио Рекорд <button class="playBtn">Play</button> <button class="pauseBtn">Pause</button></li>
-                    <li data-url="https://listen6.vdfm.ru:8000/dacha?type=.mp3">Радио дача <button class="playBtn">Play</button> <button class="pauseBtn">Pause</button></li>
+                    <li data-url="https://listen15.vdfm.ru:8000/dacha?type=.mp3">Радио дача <button class="playBtn">Play</button> <button class="pauseBtn">Pause</button></li>
                 </ul>
             </div>
         </div>
@@ -59,9 +63,20 @@
 
     <a href="https://smg4-radio-web-sdr-status-server.openstatus.dev/">Server status</a>
     <a href="smg4markerradio.html">EVENT SMG4 MARKER RADIO</a>
-    <a href="https://github.com/vendettathevhsdvrreal/smg4radiobetav2-issues/issues">Bug report</a>
+    <a href="https://github.com/vendettathevhsdvrmp4real/smg4radiobetav2-issues/issues">Bug report</a>
     <a href="https://discord.gg/PeafwRcHKE">Discord</a>
     <a href="https://bsky.app/profile/smg4radiosdroff.bsky.social">Bluesky</a>
+    <a href="https://smg4-radio-sdr.fandom.com/">Wiki</a>
+
+      <h1>Theme Packs:</h1>
+
+        <select id="themeSelector">
+            <option value="smg4"></option>
+            <option value="smg3">SMG3 (by User1PS4 vendettathevhsdvr)</option>
+            <option value="mrpuzzles">Mr. Puzzles (by User1PS4 vendettathevhsdvr)</option>
+            <option value="smg4">SMG4 (by User1PS4 vendettathevhsdvr)</option>
+            <option value="tari">Tari (by User1PS4 vendettathevhsdvr)</option>
+        </select>
 
     <script src="main.js?v=65"></script>
 
@@ -96,6 +111,17 @@
             audioElement.volume = this.value;
             document.getElementById('volumeValue').textContent = Math.round(this.value * 100) + '%';
         });
+
+
+  const themeLink = document.getElementById('theme-link');
+  const logoImage = document.getElementById('logo');
+  const selector = document.getElementById('themeSelector');
+
+  selector.addEventListener('change', function () {
+    const themeName = selector.value;
+    themeLink.setAttribute('href', `themespack/${themeName}/style.css`);
+    logoImage.setAttribute('src', `themespack/${themeName}/logo.png`);
+  });
     </script>
 </body>
 </html>
